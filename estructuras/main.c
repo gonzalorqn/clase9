@@ -9,12 +9,14 @@ typedef struct
     float promedio;
 }eAlumno;
 
-void mostrar(eAlumno clase[], int);
+void mostrarAlumnos(eAlumno clase[], int);
+void mostrarUnAlumno(eAlumno clase[], int, int);
 
 int main()
 {
     eAlumno clase[T];
     int i;
+    int alumno;
 
     for(i=0;i<T;i++)
     {
@@ -27,16 +29,30 @@ int main()
         scanf("%f", &clase[i].promedio);
     }
 
-    mostrar(clase, T);
+    printf("Legajo: ");
+    scanf("%d", &alumno);
+    mostrarAlumnos(clase, T);
+    mostrarUnAlumno(clase, T, alumno); //copiar funcion para buscar alumno por legajo
 
     return 0;
 }
 
-void mostrar(eAlumno clase[], int tam)
+void mostrarAlumnos(eAlumno clase[], int tam)
 {
     int i;
     for(i=0;i<tam;i++)
     {
         printf("%d %s %f\n", clase[i].legajo, clase[i].nombre, clase[i].promedio);
+    }
+}
+void mostrarUnAlumno(eAlumno clase[], int tam, int cual)
+{
+    int i;
+    for(i=0;i<tam;i++)
+    {
+        if(i == cual)
+        {
+            printf("%d %s %f\n", clase[i].legajo, clase[i].nombre, clase[i].promedio);
+        }
     }
 }
